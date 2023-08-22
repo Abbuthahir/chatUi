@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar class="bg-gray-900 text-white">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-menu-button color="light"></ion-menu-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>My chat title</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let msg of messages" class="flex gap-4 p-6 border-b border-black/10 text-gray-800"
+    [ngClass]="{'bg-gray-50': msg.from === 1 }">
+    <img *ngIf="msg.from === 0" src="../../../assets/001.jpg" class="w-8 h-8" />
+    <img *ngIf="msg.from === 1" src="../../../assets/bot.png" class="w-8 h-8" />
+    <p>{{ msg.text}}</p>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div class="m-2 relative flex h-full justify-center">
+      <div
+        class="w-full md:w-3/5 py-2 md:px-4 relative border border-black/10 bg-white rounded-md shadow-[0_0_10px_rgba(0,0,0,0.10)]">
+        <ion-textarea autoGrow class="w-full pl-2 pr-7"></ion-textarea>
+        <button (click)="submit()" class="absolute p-1 rounded-md text-gray-500 bottom-1.5 right-1 md:bottom-2.5 md:right-2 hover:bg-gray-100">
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
